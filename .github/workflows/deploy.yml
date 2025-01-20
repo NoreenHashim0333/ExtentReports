@@ -20,4 +20,4 @@ jobs:
       uses: ./  # Use the action defined in the repository
       with:
         branch: main
-        folder: ./
+        folder: ./ExtentReportsDemo
