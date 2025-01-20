@@ -6,25 +6,18 @@ on:
   pull_request:
     branches: [ "main" ]
 permissions:
-  contents: read
-  actions: write
+  contents: write
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout code
+    - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Run tests and generate reports
-      run: mvn clean test
-
-    - name: Debug directory
-      run: ls -R
-
-    - name: Deploy reports
-      run: |
-        if [ -d "./ExtentReports" ]; then
-          cp ./ExtentReports/* /ExtentReportsDemo
-        else
-          echo "No reports to deploy"
-        fi
+    - name: Run Extent Report Deployer
+      uses: ./  # Use the action defined in the repository
+      with:
+        branch: main
+        folder: ./
