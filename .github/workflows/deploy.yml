@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
 permissions:
-  contents: write
-  
+  contents: read
+  actions: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
