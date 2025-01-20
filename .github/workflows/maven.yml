@@ -34,4 +34,4 @@ jobs:
       uses: NoreenHashim0333/ExtentReports@main
       with:
         branch: main
-        folder: ./ExtentReports
+        folder: ./ExtentReportsDemo
