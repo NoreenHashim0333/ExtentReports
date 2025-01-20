@@ -1,0 +1,27 @@
+name: "Extent Report Deployer"
+description: "Deploy Extent Reports to Main Branch"
+inputs:
+  branch:
+    description: "Branch to deploy reports"
+    required: true
+    default: "main"  # Specify 'main' as the default branch
+  folder:
+    description: "Folder containing the reports"
+    required: true
+    default: "build"
+runs:
+  using: "composite"
+  steps:
+    - name: Deploying Reports
+      shell: bash  # Specify shell here
+      run: |
+        echo "Deploying reports from folder ${{ inputs.folder }} to branch ${{ inputs.branch }}"
+        # Add deployment logic here
+        # Example:
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git checkout ${{ inputs.branch }}
+        cp -r ${{ inputs.folder }}/* .
+        git add .
+        git commit -m "Deploying reports via GitHub Actions"
+        git push origin ${{ inputs.branch }}
