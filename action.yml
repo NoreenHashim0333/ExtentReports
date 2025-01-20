@@ -15,6 +15,9 @@ runs:
     - name: Deploying Reports
       shell: bash  # Specify shell here
       run: |
+      - name: Debug current directory
+  run: ls -R
+
         echo "Deploying reports from folder ${{ inputs.folder }} to branch ${{ inputs.branch }}"
         # Add deployment logic here
         # Example:
