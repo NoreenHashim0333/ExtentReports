@@ -24,7 +24,7 @@ jobs:
     - name: Deploy reports
       run: |
         if [ -d "./ExtentReports" ]; then
-          cp ./ExtentReports/* /ExtentReports1
+          cp ./ExtentReports/* /ExtentReportsDemo
         else
           echo "No reports to deploy"
         fi
