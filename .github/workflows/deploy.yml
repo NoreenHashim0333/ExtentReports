@@ -11,13 +11,20 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Code
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run Extent Report Deployer
-      uses: ./  # Use the action defined in the repository
-      with:
-        branch: main
-        folder: ./ExtentReports
+    - name: Run tests and generate reports
+      run: mvn clean test
+
+    - name: Debug directory
+      run: ls -R
+
+    - name: Deploy reports
+      run: |
+        if [ -d "./ExtentReports" ]; then
+          cp ./ExtentReports/* /ExtentReports1
+        else
+          echo "No reports to deploy"
+        fi
